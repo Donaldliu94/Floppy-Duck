@@ -1,30 +1,75 @@
 class Duck {
 
-    constructor(ctx){
+    constructor(ctx, duckImg){
         //required
         this.ctx = ctx;
-
         //customization
         this.gravity = 1;
         this.flapStrength = 40;
-        this.duckHeight = 20;
-        this.duckLength = 20;
-        this.x = ctx.canvas.width / 5;
+        this.duckImg = duckImg;
+        this.frameWidth = duckImg.width / 4;
+        this.frameHeight = duckImg.height;
+        this.currentFrame = 0;
+        this.frameTimer = 0;
+        this.x = ctx.canvas.width / 4;
         this.y = ctx.canvas.height / 2;
+        this.scale = .80;
+        this.animationSpeed = 10;
         this.rotation = 0;
     }
 
-    drawDuck() {
-        this.ctx.beginPath();
-        this.ctx.rect(this.x, this.y, this.duckLength, this.duckHeight);
-        this.ctx.fillStyle = "red";
-        this.ctx.fill();
-        this.ctx.closePath();
 
-        if (this.y < this.ctx.canvas.height - this.duckHeight){
+
+    drawFrame(){
+        this.frameTimer++;
+        if(this.frameTimer % this.animationSpeed < 1){
+            this.currentFrame = (this.currentFrame + 1) % 4;
+        }
+
+        this.ctx.drawImage(this.duckImg, 
+
+            this.currentFrame * this.frameWidth, 0, this.frameWidth, this.frameHeight,
+            this.x, this.y, this.scale * this.frameWidth, this.scale * this.frameHeight);
+        
+
+        if (this.y < this.ctx.canvas.height - this.frameHeight) {
             this.y += this.gravity;
             //rotate down slowly
         }
+        
+    }
+
+    drawDuck(){
+
+        // const scale = .5;
+        // const width = 70;
+        // const height = 70;
+        // const scaledWidth = scale * width;
+        // const scaleHeight = scale * height;
+
+        // drawFrame(frameX, frameY, canvasX, canvasY)
+        // this.drawFrame(0, 0, 0, 0);
+        // this.drawFrame(1, 0, scaledWidth, 0);
+        // this.drawFrame(2, 0, scaledWidth * 2, 0);
+        // this.drawFrame(3, 0, scaledWidth * 3, 0);
+
+
+        // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)       //reference
+        // this.ctx.drawImage(spriteDuck, 0, 0, width, height, 0, 0, scaledWidth, scaleHeight)
+        // this.ctx.drawImage(spriteDuck, width, 0, width, height, scaledWidth, 0, scaledWidth, scaleHeight)
+        // this.ctx.drawImage(spriteDuck, width * 2, 0, width, height, scaledWidth * 2, 0, scaledWidth, scaleHeight)
+        
+
+        // this.ctx.beginPath();
+        // this.ctx.rect(this.x, this.y, this.duckLength, this.duckHeight);
+        // this.ctx.fillStyle = "red";
+        // this.ctx.fill();
+        // this.ctx.closePath();
+
+        // if (this.y < this.ctx.canvas.height - this.duckHeight){
+        //     this.y += this.gravity;
+        //     //rotate down slowly
+        // }
     }
 
     duckUp(){
@@ -37,10 +82,11 @@ class Duck {
 
     duckDown() {
         this.y += this.flapStrength / 2;
-        if (this.y > this.ctx.canvas.height - this.duckHeight) {
-            this.y = this.ctx.canvas.height - this.duckHeight;
+        if (this.y > this.ctx.canvas.height - this.frameHeight) {
+            this.y = this.ctx.canvas.height - this.frameHeight;
             //rotate down sharp
         }
+        console.log(this.y, this.ctx.canvas.height, this.frameHeight);
     }
 
     changeGravity(newGravity){
