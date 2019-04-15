@@ -1,0 +1,155 @@
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+
+class Duck {
+
+    constructor(ctx){
+        this.ctx = ctx;
+        drawDuck();
+    }
+
+    drawDuck() {
+        this.ctx.beginPath();
+        this.ctx.rect((canvas.width - paddleWidth) / 5, ((canvas.width - paddleWidth) / 5) - 20, 20, 20);
+        this.ctx.fillStyle = "red";
+        this.ctx.fill();
+        this.ctx.closePath();
+    }
+
+
+
+}
+
+
+
+var x = canvas.width / 2;
+var y = canvas.height;
+var dx = 2;
+var dy = -2;
+
+var paddleHeight = 20;
+var paddleWidth = 20;
+var paddleX = (canvas.width - paddleWidth) / 5;
+var paddleY = (canvas.height - paddleHeight) / 5;
+
+var rightPressed = false;
+var leftPressed = false;
+var upPressed = false;
+var downPressed = false;
+var clicked = false;
+
+var gravity = 1;
+var speedX = 0.5;
+var speedY = 0.5;
+
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousedown", mouseDownHandler, false);
+document.addEventListener("mouseup", mouseUpHandler, false);
+// document.addEventListener("click", mouseClickHandler, false);
+
+
+
+
+function keyDownHandler(e) {
+    if (e.key == "Right" || e.key == "ArrowRight") {
+        rightPressed = true;
+    }
+    else if (e.key == "Left" || e.key == "ArrowLeft") {
+        leftPressed = true;
+    }
+    else if (e.key == "ArrowUp"){
+        upPressed = true;
+    }
+    else if (e.key == "ArrowDown"){
+        downPressed = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if (e.key == "Right" || e.key == "ArrowRight") {
+        rightPressed = false;
+    }
+    else if (e.key == "Left" || e.key == "ArrowLeft") {
+        leftPressed = false;
+    }
+    else if (e.key == "ArrowUp") {
+        upPressed = false;
+    }
+    else if (e.key == "ArrowDown"){
+        downPressed = false;
+    }
+}
+
+
+function mouseDownHandler(e){
+
+        clicked = true ;
+        paddleY -= 40;
+
+}
+
+
+function mouseUpHandler(e) {
+    // if (e.type = "click") {
+        clicked = false;
+    // }
+}
+
+
+
+
+function drawDuck() {
+    ctx.beginPath();
+    ctx.rect(paddleX, paddleY - paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+}
+
+
+
+
+function draw() {
+    
+    if (paddleY < canvas.height){
+        paddleY += gravity;
+    }
+
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawDuck();
+
+    // if (clicked){
+    //     paddleY -= 4;
+    // }
+
+
+
+    if (rightPressed && paddleX < canvas.width - paddleWidth - 5) {
+        paddleX += 20;
+    }
+    else if (leftPressed && paddleX > 5) {
+        paddleX -= 20;
+    }
+    else if (upPressed && paddleY > paddleHeight + 5){
+        paddleY -= 20;
+    }
+    else if (downPressed && paddleY < canvas.height - 5) {
+        paddleY += 20;
+    }
+    else if (clicked && paddleY < 20){
+        paddleY +=20
+    }
+
+
+    x += dx;
+    y += dy;
+}
+
+setInterval(draw, 10);
+
+// requestAnimationFrame(draw, 10)

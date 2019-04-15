@@ -15,7 +15,7 @@ class Pipe {
         //this.spacing = (Math.random() * [additional spacing range]) + [top img height] + [minimum spacing]; 
         this.isMovingUp = Math.random() > 0.5;
         this.isMoving = shouldMove;
-        debugger
+
     }
 
     move() {
