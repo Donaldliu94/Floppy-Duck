@@ -5,7 +5,7 @@ class Duck {
         this.ctx = ctx;
         //customization
         this.gravity = 1;
-        this.flapStrength = 40;
+        this.flapStrength = 30;
         this.duckImg = duckImg;
         this.scale = .80;
         this.frameWidth = duckImg.width / 4;
@@ -31,10 +31,10 @@ class Duck {
         this.ctx.drawImage(this.duckImg, 
 
             this.currentFrame * this.frameWidth, 0, this.frameWidth, this.frameHeight,
-            this.x, this.y, this.scale * this.frameWidth, this.scale * this.frameHeight);
+            this.x, this.y, this.scaleWidth, this.scaleHeight);
         
 
-        if (this.y < this.ctx.canvas.height - this.frameHeight) {
+        if (this.y < this.ctx.canvas.height - this.scaleHeight) {
             this.y += this.gravity;
             // rotate down slowly
         }
@@ -84,14 +84,25 @@ class Duck {
 
     duckDown() {
         this.y += this.flapStrength / 2;
-        if (this.y > this.ctx.canvas.height - this.frameHeight) {
-            this.y = this.ctx.canvas.height - this.frameHeight;
+        if (this.y > this.ctx.canvas.height - this.scaleHeight) {
+            this.y = this.ctx.canvas.height - this.scaleHeight;
             //rotate down sharp
         }
     }
 
-    changeGravity(newGravity){
-        this.gravity = newGravity;
+    // changeGravity(newGravity){
+    //     this.gravity = newGravity;
+    // }
+
+
+    isCollision() {
+
+        if(this.y + this.scaleHeight >= this.ctx.canvas.height){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 

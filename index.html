@@ -15,8 +15,8 @@
         canvas {
             background: #eee;
             display: block;
-            margin: 0 auto;
-            border: 1px solid black;
+            margin: 0px auto;
+            border: 1px solid lightcoral;
             background-size: contain;
             background-repeat: no-repeat;
         }
@@ -32,6 +32,30 @@
             top: 180px;
             left: calc(50% - 20px);
         }
+
+        #title{
+            background-color: goldenrod;
+            color: white;
+            /* background: url(https://fontmeme.com/temporary/2887a87a0519f8dd5d3459a5ec841611.png); */
+           
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 80px;
+        }
+
+        #bottom{
+            background-color: goldenrod;
+            color: white;
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 80px;
+        }
+
+        #document{
+         /* background: url(https://im2.ezgif.com/tmp/ezgif-2-c75d8b9b4949.gif); */
+            /* background-color:firebrick; */
+        }
+
     </style>
 </head>
 <body>
@@ -47,10 +71,22 @@
 
         }
     </script> -->
-    <div id="play">
-        Play
+    <div id=document>
+        <div id="play">
+            Play
+        </div>
+
+        <!-- <div id="title">
+            FLOPPY DUCK
+        </div> -->
+
+        <!-- <canvas id="myCanvas" width="400" height="400" style="background: url(https://im2.ezgif.com/tmp/ezgif-2-f81cd5eb5658.gif)"></canvas> -->
+        <canvas id="myCanvas" width="400" height="400" style="background: url(https://im5.ezgif.com/tmp/ezgif-5-b997aed1d539.gif)"></canvas>
+
+        <!-- <div id="bottom">
+
+        </div> -->
     </div>
-    <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.kym-cdn.com/photos/images/original/000/970/154/2ef.gif)"></canvas>
     <script src="./dist/bundle.js"></script>     
 </body>
 </html>

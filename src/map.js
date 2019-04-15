@@ -6,9 +6,9 @@ class Map {
         this.foreground.src = "../images/foreground.png";
     }
 
-    moveground(){
 
-    }
+
+
 }
 
 

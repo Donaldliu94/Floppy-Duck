@@ -30,7 +30,7 @@ spriteDuck.src = "./images/Quacker.png";
 spritebigMissle.src = "./images/bigMissle.png";
 
 
-const pipeSpacing = 260;
+const pipeSpacing = 195;
 
 var ducky = new Duck(ctx, spriteDuck);
 const scorey = new Score(ctx);
@@ -48,6 +48,9 @@ document.getElementById("play").addEventListener("click", start);
 document.addEventListener("keyup", keyPress);
 canvas.addEventListener("click", upHandler);
 
+
+
+
 function keyPress(e) {
     if (e.key == "ArrowUp") {
         upHandler();
@@ -55,16 +58,20 @@ function keyPress(e) {
     else if (e.key == "ArrowDown") {
         downHandler();
     }
+    else if (e.key == "r") {
+        location.reload();
+    }
 }
 
 function upHandler() {
     ducky.duckUp();
-    score += 10;
+    // score += 2;
 }
 
 function downHandler() {
     ducky.duckDown();
 }
+
 
 
 
@@ -82,7 +89,7 @@ function draw() {               //step function
     //creating pipes
     if (count > pipeSpacing){
         count = 0;
-        pipes.push(new Pipe(ctx, topPipe, bottomPipe, score > 50, ducky));
+        pipes.push(new Pipe(ctx, topPipe, bottomPipe, score > 40, ducky));
     }
 
     //Move Pipes/animate pipes
@@ -91,7 +98,7 @@ function draw() {               //step function
 
             isGameover = isGameover || pipe.isCollision();
 
-            if (pipe.x == 10){                  //score incementation 
+        if (pipe.x == (ctx.canvas.width / 4) - topPipe.width - 10 ){                  //score incementation 
                 score += 1;
             }
     });
@@ -100,9 +107,10 @@ function draw() {               //step function
     pipes = pipes.filter(pipe => pipe.x > -50);
 
 
+
     if (score > 20){
         //create missles
-        if (Math.random() < 0.01){    //roughly 1 missle every 100, 0 -> 0.0099
+        if (Math.random() < 0.005){    //roughly 1 missle every 100, 0 -> 0.0099
             missles.push(new Missle(ctx, spriteMissle, ducky));
         }
         //move missles
@@ -117,9 +125,9 @@ function draw() {               //step function
     }
 
 
-    if (score > 30) {
+    if ( score > 30)  {
         //create bigMissles
-        if (Math.random() < 0.01) { 
+        if (Math.random() < 0.003) { 
             bigMissles.push(new bigMissle(ctx, spritebigMissle, ducky));
         }
         // //move bigMissles
@@ -139,10 +147,20 @@ function draw() {               //step function
     ducky.drawFrame();
     scorey.drawScore(score);
 
-if(!isGameover)
-    requestAnimationFrame(draw)
+
+    //collision for floor
+    isGameover = isGameover || ducky.isCollision();
+    
+    
+    if(!isGameover){
+        requestAnimationFrame(draw)
+    }
 }
 
+
+
+
+        
 
 
 
