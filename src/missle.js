@@ -1,8 +1,9 @@
 class Missle {
 
-    constructor(ctx, missleImg){
+    constructor(ctx, missleImg, ducky){
         this.ctx = ctx;
         this.missleImg = missleImg;
+        this.ducky = ducky;
         this.frameWidth = missleImg.width / 4;
         this.frameHeight = missleImg.height;
         this.x = ctx.canvas.width;
@@ -34,7 +35,15 @@ class Missle {
     //     this.x -= 2;
     // }
 
+    isCollision(){
 
+        if(((this.x < this.ducky.x + this.ducky.scaleWidth) && this.x > this.ducky.x) &&
+            ((this.y < this.ducky.y + this.ducky.scaleHeight ) && (this.y > this.ducky.y)))
+        {
+            return true;
+        }
+        return false;
+    }
 
 }
 

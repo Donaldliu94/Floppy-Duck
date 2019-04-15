@@ -27,5 +27,5 @@
 /config/master.key
 
 node_modles/
-bundle.js
-bundle.js.map
+# bundle.js
+# bundle.js.map

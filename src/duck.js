@@ -7,14 +7,16 @@ class Duck {
         this.gravity = 1;
         this.flapStrength = 40;
         this.duckImg = duckImg;
+        this.scale = .80;
         this.frameWidth = duckImg.width / 4;
         this.frameHeight = duckImg.height;
+        this.scaleWidth = this.scale * this.frameWidth;
+        this.scaleHeight = this.scale * this.frameHeight;
         this.currentFrame = 0;
         this.frameTimer = 0;
         this.x = ctx.canvas.width / 4;
         this.y = ctx.canvas.height / 2;
-        this.scale = .80;
-        this.animationSpeed = 10;
+        this.animationSpeed = 5;
         this.rotation = 0;
     }
 
@@ -34,7 +36,7 @@ class Duck {
 
         if (this.y < this.ctx.canvas.height - this.frameHeight) {
             this.y += this.gravity;
-            //rotate down slowly
+            // rotate down slowly
         }
         
     }
@@ -86,7 +88,6 @@ class Duck {
             this.y = this.ctx.canvas.height - this.frameHeight;
             //rotate down sharp
         }
-        console.log(this.y, this.ctx.canvas.height, this.frameHeight);
     }
 
     changeGravity(newGravity){

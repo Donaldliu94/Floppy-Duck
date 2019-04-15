@@ -5,12 +5,14 @@ import Duck from './duck';
 import Pipe from './pipe';
 import Score from './score';
 import Missle from './missle';
+import bigMissle from './bigMissle';
 
 
 const topPipe = new Image();         //setting topPipe to a new image object
 const bottomPipe = new Image();
 const spriteMissle = new Image();
 const spriteDuck = new Image();
+const spritebigMissle = new Image();
 
 
 function start() {            //bottomPipe because bottomPipe is bigger so that means that topPipe will 100% load  //this is my function init
@@ -21,10 +23,11 @@ function start() {            //bottomPipe because bottomPipe is bigger so that 
 };
 
 
-topPipe.src = "../images/topPipe.png";
-bottomPipe.src = "../images/bottomPipe.png";
-spriteMissle.src = "../images/missle.png";
-spriteDuck.src = "../images/Quacker.png";
+topPipe.src = "./images/topPipe.png";
+bottomPipe.src = "./images/bottomPipe.png";
+spriteMissle.src = "./images/missle.png";
+spriteDuck.src = "./images/Quacker.png";
+spritebigMissle.src = "./images/bigMissle.png";
 
 
 const pipeSpacing = 260;
@@ -37,6 +40,9 @@ var count = 0;
 let score = 0;
 var pipes = [];
 var missles = [];
+var bigMissles = [];
+
+var isGameover = false;
 
 document.getElementById("play").addEventListener("click", start);
 document.addEventListener("keyup", keyPress);
@@ -53,7 +59,7 @@ function keyPress(e) {
 
 function upHandler() {
     ducky.duckUp();
-    score--;
+    score += 10;
 }
 
 function downHandler() {
@@ -76,14 +82,17 @@ function draw() {               //step function
     //creating pipes
     if (count > pipeSpacing){
         count = 0;
-        pipes.push(new Pipe(ctx, topPipe, bottomPipe, score > 50));
+        pipes.push(new Pipe(ctx, topPipe, bottomPipe, score > 50, ducky));
     }
 
     //Move Pipes/animate pipes
     pipes.forEach(pipe => {
             pipe.move();
+
+            isGameover = isGameover || pipe.isCollision();
+
             if (pipe.x == 10){                  //score incementation 
-                score += 10;
+                score += 1;
             }
     });
     
@@ -91,43 +100,51 @@ function draw() {               //step function
     pipes = pipes.filter(pipe => pipe.x > -50);
 
 
+    if (score > 20){
+        //create missles
+        if (Math.random() < 0.01){    //roughly 1 missle every 100, 0 -> 0.0099
+            missles.push(new Missle(ctx, spriteMissle, ducky));
+        }
+        //move missles
+        missles.forEach(missle =>{
+            missle.drawFrame();
 
-    //create missles
-    if (Math.random() < 0.01){    //roughly 1 missle every 100, 0 -> 0.0099
-        missles.push(new Missle(ctx, spriteMissle));
+            isGameover = isGameover || missle.isCollision();
+        });
+        
+        //remove missles
+        missles = missles.filter(missle => missle.x > -70);
     }
-    //move missles
-    missles.forEach(missle =>{
-        missle.drawFrame();
-    });
-    
-    //remove missles
-    missles = missles.filter(missle => missle.x > -70);
-    
-    
-    
+
+
+    if (score > 30) {
+        //create bigMissles
+        if (Math.random() < 0.01) { 
+            bigMissles.push(new bigMissle(ctx, spritebigMissle, ducky));
+        }
+        // //move bigMissles
+        bigMissles.forEach(bigMissle => {
+            bigMissle.drawFrame();
+
+            isGameover = isGameover || bigMissle.isCollision();
+        });
+
+        // //remove bigMissles
+        bigMissles = bigMissles.filter(bigMissle => bigMissle.x > -70);
+    }
+
     
     
 
-
-    //unsure
     ducky.drawFrame();
-
     scorey.drawScore(score);
 
-
+if(!isGameover)
     requestAnimationFrame(draw)
 }
 
 
 
-
-// setInterval( () => {
-
-//     ducky.draw();
-// //     map.draw();
-// //     score.draw();
-// }, 10)
 
 
 
