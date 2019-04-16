@@ -28,12 +28,20 @@
 
         #innerCanvasContainer{
             display: flex;
+            justify-content: center;
         }
 
         #leftSideCanvas{
             width: 200px;
             height: 400px;
             font-family: 'Dokdo', cursive;
+        }
+
+        #github{
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
+            color: lightcoral;
+            margin-left: 40px;
         }
 
         #rightSideCanvas{
@@ -72,7 +80,7 @@
             padding:20px 15px;
             display: inline;
             position: absolute;
-            top: 280px;
+            top: 290px;
             left: calc(50% - 20px);
             font-family: 'Dokdo', cursive;
             z-index: 10;
@@ -100,7 +108,7 @@
             height: 40px;
             margin-top: 80px;
             font-family: 'Dokdo', cursive;
-            font-size: 36px;
+            font-size: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -154,7 +162,10 @@
         <div class="canvasContainer">
             <div id="innerCanvasContainer">
                 <div id="leftSideCanvas">
-                    GITHUB
+                    <div id="github">Github</div>
+                    <div id="github">LinkedIn</div>
+                    <div id="github">Personal</div>
+                    
 
                 </div>
                 <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.imgur.com/k533syr.gif)"></canvas>
