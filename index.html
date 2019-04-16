@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="./src/duck.css">
     <link href="https://fonts.googleapis.com/css?family=Dokdo" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
     <title>Floppy Duck</title>
     <style>
         * {
@@ -29,6 +31,7 @@
         #innerCanvasContainer{
             display: flex;
             justify-content: center;
+            padding-top: 50px;
         }
 
         #leftSideCanvas{
@@ -42,6 +45,61 @@
             font-size: 36px;
             color: lightcoral;
             margin-left: 40px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        #githubIcon{
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
+            color: lightcoral;
+            margin-left: 40px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        #linkedin{
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
+            color: lightcoral;
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        #linkedinIcon{
+        font-family: 'Dokdo', cursive;
+        font-size: 36px;
+        color: lightcoral;
+        margin-left: 40px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        }
+
+        #personal{
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
+            color: lightcoral;
+            margin-left: 40px;
+            cursor: pointer;
+        }
+        
+        #github:hover{
+            color:lightsalmon;
+        }
+        #linkedin:hover{
+            color:lightsalmon;
+        }
+        #personal:hover{
+            color:lightsalmon;
+        }
+
+        #githubIcon:hover{
+            color: black;
         }
 
         #rightSideCanvas{
@@ -80,10 +138,11 @@
             padding:20px 15px;
             display: inline;
             position: absolute;
-            top: 290px;
+            top: 340px;
             left: calc(50% - 20px);
             font-family: 'Dokdo', cursive;
             z-index: 10;
+            cursor: pointer;
         }
 
         #gameOver{
@@ -94,12 +153,13 @@
             padding:20px 15px;
             display: inline;
             position: absolute;
-            top: 280px;
+            top: 340px;
             left: calc(50% - 150px);
             z-index: 1;
+            cursor: pointer;
         }
 
-        #title{
+        #title a{
             background-color: white;
             color: lightcoral;
             /* background: url(https://fontmeme.com/temporary/2887a87a0519f8dd5d3r459a5ec841611.png); */
@@ -153,7 +213,7 @@
         </div>
 
         <div id="title">
-            Floppy Duck
+            <a href="http://flappybird.io/" style="text-decoration:none;">Floppy Duck</a>
         </div>
         <div id="gameOver"> 
             GAME OVER. CLICK TO PLAY AGAIN! 
@@ -162,9 +222,11 @@
         <div class="canvasContainer">
             <div id="innerCanvasContainer">
                 <div id="leftSideCanvas">
-                    <div id="github">Github</div>
-                    <div id="github">LinkedIn</div>
-                    <div id="github">Personal</div>
+                    <span id="github">Github:<i class="fab fa-github"></i></span> 
+                    <!-- <span id="githubIcon"><i class="fab fa-github"></i></span> -->
+                    <span id="linkedin">LinkedIn:<i class="fab fa-linkedin"></i></span>
+                    <!-- <span id="linkedinIcon"><i class="fab fa-linkedin"></i></span> -->
+                    <span id="personal">Personal:</span>
                     
 
                 </div>
@@ -181,12 +243,13 @@
             </div>
 
             <div id="clickGif">
-                <img src="https://i.imgur.com/0dZs5zI.gif" alt="" >
+                <!-- <img src="https://i.imgur.com/0dZs5zI.gif" alt="" > -->
             </div>
+          
         </div>
 
         <div id="bottom">
-            <span>Left-Click the mouse to flop away</span>
+            <span>Left-Click the <img src="https://i.imgur.com/0dZs5zI.gif" alt=""> to flop away</span>
         </div>
 
 

@@ -70,6 +70,9 @@ function keyPress(e) {
     else if (e.key == "ArrowDown") {
         downHandler();
     }
+    else if (e.key == " "){
+        upHandler();
+    }
 }
 
 function upHandler() {
@@ -120,7 +123,7 @@ function draw() {               //step function
 
             isGameover = isGameover || pipe.isCollision();
 
-        if (pipe.x == (ctx.canvas.width / 4) - topPipe.width - 10 ){                  //score incementation 
+        if (pipe.x == (ctx.canvas.width / 4) - topPipe.width - 5 ){                  //score incementation 
                 score += 1;
                 soundy.play();
             }
