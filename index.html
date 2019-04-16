@@ -19,8 +19,9 @@
             background: #eee;
             display: block;
             /* margin: 0px auto; */
-            border: 1px solid lightcoral;
+            border: 1px solid black;
             background-color: white;
+            border-radius: 5%;
             z-index: 5;
         }
 
@@ -44,7 +45,6 @@
             font-family: 'Dokdo', cursive;
             font-size: 36px;
             color: lightcoral;
-            margin-left: 40px;
             display: flex;
             align-items: center;
             cursor: pointer;
@@ -54,30 +54,44 @@
             font-family: 'Dokdo', cursive;
             font-size: 36px;
             color: lightcoral;
-            margin-left: 40px;
-            width: 50px;
-            height: 50px;
+            margin-left: 10px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        #githubContainer{
+            display: flex;
+            justify-content: center;
+            margin-right: 50px;
+            margin-top: 45px;
+            margin-bottom: 20px;
         }
 
         #linkedin{
             font-family: 'Dokdo', cursive;
             font-size: 36px;
             color: lightcoral;
-            margin-left: 15px;
             display: flex;
             align-items: center;
             cursor: pointer;
         }
         
         #linkedinIcon{
-        font-family: 'Dokdo', cursive;
-        font-size: 36px;
-        color: lightcoral;
-        margin-left: 40px;
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
+            color: lightcoral;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        #linkedinContainer{
+            display: flex;
+            justify-content: center;
+            margin-right: 75px;
+            margin-bottom: 20px;
         }
 
         #personal{
@@ -86,6 +100,21 @@
             color: lightcoral;
             margin-left: 40px;
             cursor: pointer;
+        }
+
+        #personalIcon{
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
+            color: lightcoral;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        #personalContainer{
+            display: flex;
+            justify-content: center;
+            margin-right: 112px;
+            margin-bottom: 20px;
         }
         
         #github:hover{
@@ -99,7 +128,7 @@
         }
 
         #githubIcon:hover{
-            color: black;
+            /* color: black; */
         }
 
         #rightSideCanvas{
@@ -222,11 +251,18 @@
         <div class="canvasContainer">
             <div id="innerCanvasContainer">
                 <div id="leftSideCanvas">
-                    <span id="github">Github:<i class="fab fa-github"></i></span> 
-                    <!-- <span id="githubIcon"><i class="fab fa-github"></i></span> -->
-                    <span id="linkedin">LinkedIn:<i class="fab fa-linkedin"></i></span>
-                    <!-- <span id="linkedinIcon"><i class="fab fa-linkedin"></i></span> -->
-                    <span id="personal">Personal:</span>
+                    <div id="githubContainer">
+                        <span id="github">Github:</span> 
+                        <a href="https://github.com/Donaldliu94/javascript-project" id="githubIcon" style="text-decoration:none;"><i class="fab fa-github"></i></a>
+                    </div>
+                    <div id="linkedinContainer">
+                        <span id="linkedin">LinkedIn:</span>
+                        <a href="https://www.linkedin.com/in/donald-liu/" id="linkedinIcon" style="text-decoration:none;"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <div id="personalContainer">
+                        <span id="personal">Personal:</span>
+                        <span id="personalIcon"><i class="fas fa-user-tie"></i></span>
+                    </div>
                     
 
                 </div>
