@@ -48,9 +48,17 @@ var isGameover = false;
 
 
 document.getElementById("play").addEventListener("click", start);
+document.getElementById("gameOver").addEventListener("click", restart);
 document.addEventListener("keyup", keyPress);
 canvas.addEventListener("click", upHandler);
 canvas.addEventListener("click", reloadHandler);
+
+canvas.addEventListener("selectstart", function (e) {
+    e.preventDefault();
+    return false;
+}, false);
+
+
 
 
 
@@ -66,7 +74,6 @@ function keyPress(e) {
 
 function upHandler() {
     ducky.duckUp();
-    score += 10
 }
 
 function downHandler() {
@@ -79,11 +86,15 @@ function reloadHandler(e){
     }
 }
 
-
-
-if (isGameover) {
-    document.getElementById("game_over");
+function restart(){
+    location.reload();
 }
+
+
+
+// if (isGameover) {
+//     document.getElementById("gameOver").style.zIndex = 6;
+// }
 
 
 // SCREEN RENDER 
@@ -162,13 +173,13 @@ function draw() {               //step function
 
     //collision for floor
     isGameover = isGameover || ducky.isCollision();
-    
+
 
 
     if(!isGameover){
         requestAnimationFrame(draw)
     } else {
-
+        document.getElementById("gameOver").style.zIndex = 6;
     }
 }
 

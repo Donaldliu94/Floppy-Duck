@@ -16,20 +16,51 @@
         canvas {
             background: #eee;
             display: block;
-            margin: 0px auto;
-            /* border: 1px solid lightcoral; */
+            /* margin: 0px auto; */
+            border: 1px solid lightcoral;
             background-color: white;
+            z-index: 5;
+        }
+
+        .canvasContainer {
             z-index: 10;
         }
 
-        .canvasElement {
-            z-index: 10;
+        #innerCanvasContainer{
+            display: flex;
         }
+
+        #leftSideCanvas{
+            width: 200px;
+            height: 400px;
+            font-family: 'Dokdo', cursive;
+        }
+
+        #rightSideCanvas{
+            width: 200px;
+            height: 400px;
+            font-size: 36px;
+            align-content: center;
+            color: lightcoral;
+        }
+
+        #rightSideCanvas div{
+            font-family: 'Dokdo', cursive;
+        }
+
+        #avoid{margin: 45px 50px 0px;}
+        #the{margin: 0px 68px;}
+        #smallMissles{margin-left: 70px;}
+        #and{margin-left: 65px;}
+        #maybe{margin-left: 50px;}
+        #bigMissles{margin-left: 70px;}
+
+
 
         #clickGif{
             display: flex;
             justify-content: center;
-            opacity: 0.5;
+            /* opacity: 0.5; */
             background-color: white;
         }
 
@@ -43,10 +74,11 @@
             position: absolute;
             top: 280px;
             left: calc(50% - 20px);
-            /* z-index: 10; */
+            font-family: 'Dokdo', cursive;
+            z-index: 10;
         }
 
-        #game_over{
+        #gameOver{
             background-color: goldenrod;
             color: white;
             border-radius:50px;
@@ -54,9 +86,9 @@
             padding:20px 15px;
             display: inline;
             position: absolute;
-            top: 250px;
-            left: calc(50% - 20px);
-             z-index: 0;
+            top: 280px;
+            left: calc(50% - 150px);
+            z-index: 1;
         }
 
         #title{
@@ -113,21 +145,37 @@
         </div>
 
         <div id="title">
-            FLOPPY DUCK
+            Floppy Duck
         </div>
-        <!-- <div id="game_over"> 
-            GAME OVER
-        </div> -->
+        <div id="gameOver"> 
+            GAME OVER. CLICK TO PLAY AGAIN! 
+        </div>
 
-        <div class="canvasElement">
-            <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.imgur.com/k533syr.gif)"></canvas>
-                    <div id="clickGif">
-                        <img src="https://i.imgur.com/0dZs5zI.gif" alt="" >
-                    </div>
+        <div class="canvasContainer">
+            <div id="innerCanvasContainer">
+                <div id="leftSideCanvas">
+                    GITHUB
+
+                </div>
+                <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.imgur.com/k533syr.gif)"></canvas>
+                <div id="rightSideCanvas">
+                    <div id="avoid">Avoid</div>
+                    <div id="the">the</div>
+                    <div id="smallMissles"><img src="https://i.imgur.com/WyVBxL7.gif" alt=""></div>
+                    <div id="and">and</div>
+                    <div id="maybe">maybe</div>
+                    <div id="the">the</div>
+                    <div id="bigMissles"><img src="https://i.imgur.com/IqIpol4.gif" alt=""></div>
+                </div>
+            </div>
+
+            <div id="clickGif">
+                <img src="https://i.imgur.com/0dZs5zI.gif" alt="" >
+            </div>
         </div>
 
         <div id="bottom">
-            <span>Left-Click the mouse to flap away</span>
+            <span>Left-Click the mouse to flop away</span>
         </div>
 
 
