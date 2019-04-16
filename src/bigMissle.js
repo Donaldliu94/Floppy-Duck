@@ -12,7 +12,7 @@ class bigMissle {
         this.frameTimer = 0;
         //customization
         this.scale = 1;
-        this.bigMissleSpeed = 3;
+        this.bigMissleSpeed = 4;
         this.animationSpeed = 10;       //frametimer, every time 10 frames i change the image
     }
 
@@ -25,6 +25,17 @@ class bigMissle {
             this.currentFrame = (this.currentFrame + 1) % 4;
         }
         this.x -= this.bigMissleSpeed;
+
+
+        //homing
+        if (this.y < this.ducky.y){
+            this.y += 0.5;
+        }
+
+        if (this.y > this.ducky.y){
+            this.y -= 0.5;
+        }
+
         this.ctx.drawImage(this.bigMissleImg,
             this.currentFrame * this.frameWidth, 0, this.frameWidth, this.frameHeight,
             this.x, this.y, this.scale * this.frameWidth, this.scale * this.frameHeight);

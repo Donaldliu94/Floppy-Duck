@@ -25,6 +25,16 @@ class Missle {
             this.currentFrame = (this.currentFrame + 1) % 4;
         }
         this.x -= this.missleSpeed;
+
+        //homing
+        if (this.y < this.ducky.y){
+            this.y += 0.5;
+        }
+        if (this.y > this.ducky.y){
+            this.y -= 0.5;
+        }
+
+
         this.ctx.drawImage(this.missleImg,
             this.currentFrame * this.frameWidth, 0, this.frameWidth, this.frameHeight,
             this.x, this.y, this.scale * this.frameWidth, this.scale * this.frameHeight);

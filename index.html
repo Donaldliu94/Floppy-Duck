@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="./src/duck.css">
+    <link href="https://fonts.googleapis.com/css?family=Dokdo" rel="stylesheet">
     <title>Floppy Duck</title>
     <style>
         * {
@@ -17,8 +18,16 @@
             display: block;
             margin: 0px auto;
             border: 1px solid lightcoral;
-            background-size: contain;
-            background-repeat: no-repeat;
+            z-index: 10;
+        }
+
+        .canvasElement {
+            z-index: 10;
+        }
+
+        #clickGif{
+            display: flex;
+            justify-content: center;
         }
 
         #play{
@@ -29,26 +38,47 @@
             padding:20px 15px;
             display: inline;
             position: absolute;
-            top: 180px;
+            top: 280px;
             left: calc(50% - 20px);
+            /* z-index: 10; */
+        }
+
+        #game_over{
+            background-color: goldenrod;
+            color: white;
+            border-radius:50px;
+            text-align:center;
+            padding:20px 15px;
+            display: inline;
+            position: absolute;
+            top: 250px;
+            left: calc(50% - 20px);
+             z-index: 0;
         }
 
         #title{
-            background-color: goldenrod;
+            background-color: lightcoral;
             color: white;
-            /* background: url(https://fontmeme.com/temporary/2887a87a0519f8dd5d3459a5ec841611.png); */
-           
+            /* background: url(https://fontmeme.com/temporary/2887a87a0519f8dd5d3r459a5ec841611.png); */
             background-size: contain;
             background-repeat: no-repeat;
-            height: 80px;
+            height: 100px;
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
+            display: flex;
+            justify-content: center;
         }
 
         #bottom{
-            background-color: goldenrod;
+            background-color: lightcoral;
             color: white;
             background-size: contain;
             background-repeat: no-repeat;
-            height: 80px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
         }
 
         #document{
@@ -72,20 +102,32 @@
         }
     </script> -->
     <div id=document>
+
         <div id="play">
             Play
         </div>
 
-        <!-- <div id="title">
+        <div id="title">
             FLOPPY DUCK
+        </div>
+        <!-- <div id="game_over"> 
+            GAME OVER
         </div> -->
 
-        <!-- <canvas id="myCanvas" width="400" height="400" style="background: url(https://im2.ezgif.com/tmp/ezgif-2-f81cd5eb5658.gif)"></canvas> -->
-        <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.imgur.com/k533syr.gif)"></canvas>
+        <div class="canvasElement">
+            <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.imgur.com/k533syr.gif)"></canvas>
+                    <div id="clickGif">
+                        <img src="https://i.imgur.com/0dZs5zI.gif" alt="">
+                    </div>
+        </div>
 
-        <!-- <div id="bottom">
+        <div id="bottom">
+            <span>Left-Click the mouse to flap away</span>
+        </div>
 
-        </div> -->
+
+
+
     </div>
     <script src="./dist/bundle.js"></script>     
 </body>

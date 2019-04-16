@@ -4,10 +4,10 @@ class Duck {
         //required
         this.ctx = ctx;
         //customization
-        this.gravity = 0.5;
-        // this.gravity = 1.5;
-        this.flapStrength = 15;
-        // this.flapStrength = 30;
+        // this.gravity = 0.5;
+        this.gravity = 1;
+        // this.flapStrength = 15;
+        this.flapStrength = 30;
         this.duckImg = duckImg;
         this.scale = .80;
         this.frameWidth = duckImg.width / 4;
@@ -22,7 +22,7 @@ class Duck {
         this.rotation = 0;
 
         //modification to speed
-        this.vel_y = 0;
+        // this.vel_y = 0;
     }
 
 
@@ -40,11 +40,11 @@ class Duck {
         
 
         if (this.y < this.ctx.canvas.height - this.scaleHeight) {
-            this.vel_y += this.gravity;
-            this.vel_y *= 0.9;
-            this.y += this.vel_y;
+            // this.vel_y += this.gravity;
+            // this.vel_y *= 0.9;
+            // this.y += this.vel_y;
 
-            // this.y += this.gravity;
+            this.y += this.gravity;
             // rotate down slowly
         }
 
@@ -85,8 +85,8 @@ class Duck {
     }
 
     duckUp(){
-        this.vel_y -= this.flapStrength;
-        // this.y -= this.flapStrength;
+        // this.vel_y -= this.flapStrength;
+        this.y -= this.flapStrength;
         if (this.y < 0){
             this.y = 0;
             //rotate up sharp
