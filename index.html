@@ -17,7 +17,8 @@
             background: #eee;
             display: block;
             margin: 0px auto;
-            border: 1px solid lightcoral;
+            /* border: 1px solid lightcoral; */
+            background-color: white;
             z-index: 10;
         }
 
@@ -28,6 +29,8 @@
         #clickGif{
             display: flex;
             justify-content: center;
+            opacity: 0.5;
+            background-color: white;
         }
 
         #play{
@@ -57,21 +60,23 @@
         }
 
         #title{
-            background-color: lightcoral;
-            color: white;
+            background-color: white;
+            color: lightcoral;
             /* background: url(https://fontmeme.com/temporary/2887a87a0519f8dd5d3r459a5ec841611.png); */
             background-size: contain;
             background-repeat: no-repeat;
-            height: 100px;
+            height: 40px;
+            margin-top: 80px;
             font-family: 'Dokdo', cursive;
             font-size: 36px;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         #bottom{
-            background-color: lightcoral;
-            color: white;
+            background-color: white;
+            color:lightcoral;
             background-size: contain;
             background-repeat: no-repeat;
             height: 50px;
@@ -117,7 +122,7 @@
         <div class="canvasElement">
             <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.imgur.com/k533syr.gif)"></canvas>
                     <div id="clickGif">
-                        <img src="https://i.imgur.com/0dZs5zI.gif" alt="">
+                        <img src="https://i.imgur.com/0dZs5zI.gif" alt="" >
                     </div>
         </div>
 
