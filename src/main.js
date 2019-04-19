@@ -73,6 +73,9 @@ function keyPress(e) {
     else if (e.key == " "){
         upHandler();
     }
+    else if (e.key == "Enter"){
+        location.reload();
+    }
 }
 
 function upHandler() {
@@ -114,27 +117,27 @@ function draw() {               //step function
     //creating pipes
     if (count > pipeSpacing){
         count = 0;
-        pipes.push(new Pipe(ctx, topPipe, bottomPipe, score > 10, ducky));
+        pipes.push(new Pipe(ctx, topPipe, bottomPipe, score > 20, ducky));
     }
 
     //Move Pipes/animate pipes
     pipes.forEach(pipe => {
             pipe.move();
-
             isGameover = isGameover || pipe.isCollision();
 
-        if (pipe.x == (ctx.canvas.width / 4) - topPipe.width - 5 ){                  //score incementation 
+        if (pipe.x == (ctx.canvas.width / 4) - topPipe.width - 10 ){                  //score incementation 
                 score += 1;
                 soundy.play();
             }
     });
     
     //Remove pipes that have left the screen
+
     pipes = pipes.filter(pipe => pipe.x > -50);
 
 
 
-    if (score > 15){
+    if (score > 10){
         //create missles
         if (Math.random() < 0.005){    //roughly 1 missle every 100, 0 -> 0.0099
             missles.push(new Missle(ctx, spriteMissle, ducky));
@@ -151,7 +154,7 @@ function draw() {               //step function
     }
 
 
-    if ( score > 20)  {
+    if ( score > 15)  {
         //create bigMissles
         if (Math.random() < 0.003) { 
             bigMissles.push(new bigMissle(ctx, spritebigMissle, ducky));

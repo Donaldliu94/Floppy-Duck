@@ -12,7 +12,7 @@ class Missle {
         this.frameTimer = 0;
         //customization
         this.scale = 1;
-        this.missleSpeed = 2;
+        this.missleSpeed = 3;
         this.animationSpeed = 10;       //frametimer, every time 10 frames i change the image
     }
 
@@ -28,10 +28,10 @@ class Missle {
 
         //homing
         if (this.y < this.ducky.y){
-            this.y += 0.5;
+            this.y += 0.3;
         }
         if (this.y > this.ducky.y){
-            this.y -= 0.5;
+            this.y -= 0.3;
         }
 
 

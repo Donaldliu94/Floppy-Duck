@@ -19,7 +19,7 @@ class Pipe {
     }
 
     move() {
-        this.x--; //= this.x -=.5;               //speed of pipes
+        this.x-= 2; //= this.x -=.5;               //speed of pipes
         this.ctx.drawImage(this.topPipe, this.x, this.y);
         this.ctx.drawImage(this.bottomPipe, this.x, this.y + this.spacing);
         if(this.isMoving){

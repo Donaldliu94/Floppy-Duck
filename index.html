@@ -128,7 +128,15 @@
         }
 
         #githubIcon:hover{
-            /* color: black; */
+            color: black;
+        }
+
+        #linkedinIcon:hover{
+            color: #0377B5;
+        }
+
+        #personalIcon:hover{
+            color: black;
         }
 
         #rightSideCanvas{
@@ -191,7 +199,6 @@
         #title a{
             background-color: white;
             color: lightcoral;
-            /* background: url(https://fontmeme.com/temporary/2887a87a0519f8dd5d3r459a5ec841611.png); */
             background-size: contain;
             background-repeat: no-repeat;
             height: 40px;
@@ -201,6 +208,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            /* background-color: turquoise; */
+        }
+
+        #hello:hover{
+            display: inline-block;
+            vertical-align: middle;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            position: relative;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-property: transform;
+            transition-property: transform;
         }
 
         #bottom{
@@ -217,8 +238,52 @@
 
         #document{
          /* background: url(https://im2.ezgif.com/tmp/ezgif-2-c75d8b9b4949.gif); */
-            /* background-color:firebrick; */
+            /* background-color: turquoise; */
         }
+
+
+        {/*buzz for title*/}
+        @-webkit-keyframes hvr-buzz {
+        50% {
+            -webkit-transform: translateX(3px) rotate(2deg);
+            transform: translateX(3px) rotate(2deg);
+        }
+        100% {
+            -webkit-transform: translateX(-3px) rotate(-2deg);
+            transform: translateX(-3px) rotate(-2deg);
+        }
+        }
+        @keyframes hvr-buzz {
+        50% {
+            -webkit-transform: translateX(3px) rotate(2deg);
+            transform: translateX(3px) rotate(2deg);
+        }
+        100% {
+            -webkit-transform: translateX(-3px) rotate(-2deg);
+            transform: translateX(-3px) rotate(-2deg);
+        }
+        }
+        .hvr-buzz {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        }
+        .hvr-buzz:hover, .hvr-buzz:focus, .hvr-buzz:active {
+        -webkit-animation-name: hvr-buzz;
+        animation-name: hvr-buzz;
+        -webkit-animation-duration: 0.15s;
+        animation-duration: 0.15s;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        }
+
+
+    
+
 
     </style>
 </head>
@@ -242,7 +307,7 @@
         </div>
 
         <div id="title">
-            <a href="http://flappybird.io/" style="text-decoration:none;">Floppy Duck</a>
+            <a href="http://flappybird.io/" style="text-decoration:none;" target="_blank" class="hvr-buzz">Floppy Duck</a>
         </div>
         <div id="gameOver"> 
             GAME OVER. CLICK TO PLAY AGAIN! 
@@ -253,20 +318,20 @@
                 <div id="leftSideCanvas">
                     <div id="githubContainer">
                         <span id="github">Github:</span> 
-                        <a href="https://github.com/Donaldliu94/javascript-project" id="githubIcon" style="text-decoration:none;"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/Donaldliu94/javascript-project" id="githubIcon" style="text-decoration:none;" target="_blank" class="hvr-float-shadow"><i class="fab fa-github"></i></a>
                     </div>
                     <div id="linkedinContainer">
                         <span id="linkedin">LinkedIn:</span>
-                        <a href="https://www.linkedin.com/in/donald-liu/" id="linkedinIcon" style="text-decoration:none;"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/donald-liu/" id="linkedinIcon" style="text-decoration:none;" target="_blank" class="hvr-float-shadow"><i class="fab fa-linkedin"></i></a>
                     </div>
                     <div id="personalContainer">
                         <span id="personal">Personal:</span>
-                        <span id="personalIcon"><i class="fas fa-user-tie"></i></span>
+                        <span id="personalIcon" class="hvr-float-shadow"><i class="fas fa-user-tie"></i></span>
                     </div>
                     
 
                 </div>
-                <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.imgur.com/k533syr.gif)"></canvas>
+                <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.imgur.com/7TxKCdl.gif)"></canvas>
                 <div id="rightSideCanvas">
                     <div id="avoid">Avoid</div>
                     <div id="the">the</div>
