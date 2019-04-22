@@ -126,7 +126,7 @@ function draw() {               //step function
             isGameover = isGameover || pipe.isCollision();
 
         if (pipe.x == (ctx.canvas.width / 4) - topPipe.width - 10 ){                  //score incementation 
-                score += 1;
+                score += 5;
                 soundy.play();
             }
     });
