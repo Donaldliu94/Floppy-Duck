@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./favicon.png" type="image/png"/>
     <link rel="stylesheet" type="text/css" href="./src/duck.css">
     <link href="https://fonts.googleapis.com/css?family=Dokdo" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
 
     <title>Floppy Duck</title>
     <style>
@@ -22,11 +24,11 @@
             border: 1px solid black;
             background-color: white;
             border-radius: 5%;
-            z-index: 5;
+            /* z-index: 5; */
         }
 
         .canvasContainer {
-            z-index: 10;
+            /* z-index: 10; */
         }
 
         #innerCanvasContainer{
@@ -117,10 +119,38 @@
             margin-bottom: 20px;
         }
         
+        #angelList{
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
+            color: lightcoral;
+            margin-left: 40px;
+            cursor: pointer;
+        }
+
+        #angelListIcon{
+            font-family: 'Dokdo', cursive;
+            font-size: 36px;
+            color: lightcoral;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        #angelListContainer{
+            display: flex;
+            justify-content: center;
+            margin-right: 105px;
+            margin-bottom: 20px;
+        }
+
+
+
         #github:hover{
             color:lightsalmon;
         }
         #linkedin:hover{
+            color:lightsalmon;
+        }
+        #angelList:hover{
             color:lightsalmon;
         }
         #personal:hover{
@@ -136,6 +166,9 @@
         }
 
         #personalIcon:hover{
+            color: black;
+        }
+        #angelListIcon:hover{
             color: black;
         }
 
@@ -178,7 +211,7 @@
             top: 340px;
             left: calc(50% - 20px);
             font-family: 'Dokdo', cursive;
-            z-index: 10;
+            /* z-index: 10; */
             cursor: pointer;
         }
 
@@ -188,12 +221,29 @@
             border-radius:50px;
             text-align:center;
             padding:20px 15px;
-            display: inline;
+            /* display: inline; */
             position: absolute;
             top: 340px;
             left: calc(50% - 150px);
-            z-index: 1;
+            /* z-index: 1; */
+            display: none;
             cursor: pointer;
+        }
+
+        #scoreForm{
+
+            background-color: goldenrod;
+            color: white;
+            border-radius: 10px;
+            text-align:center;
+            padding:20px 15px;
+            display: none;
+            position: absolute;
+            top: 340px;
+            left: calc(50% - 125px);
+            /* z-index: 6; */
+            cursor: pointer;
+            
         }
 
         #title a{
@@ -313,9 +363,17 @@
             GAME OVER. CLICK TO PLAY AGAIN! 
         </div>
 
+        <form id="scoreForm">
+            Enter Name For High Score <br><br>
+            Name: <input type="text" name="Username">
+            <button>submit</button>
+        </form>
+
+
         <div class="canvasContainer">
             <div id="innerCanvasContainer">
                 <div id="leftSideCanvas">
+
                     <div id="githubContainer">
                         <span id="github">Github:</span> 
                         <a href="https://github.com/Donaldliu94/javascript-project" id="githubIcon" style="text-decoration:none;" target="_blank" class="hvr-float-shadow"><i class="fab fa-github"></i></a>
@@ -323,6 +381,12 @@
                     <div id="linkedinContainer">
                         <span id="linkedin">LinkedIn:</span>
                         <a href="https://www.linkedin.com/in/donald-liu/" id="linkedinIcon" style="text-decoration:none;" target="_blank" class="hvr-float-shadow"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <div id="angelListContainer">
+                        <span id="angelList">Personal:</span>
+                        <a href="https://angel.co/donald-liu-1" id="angelListIcon" style="text-decoration:none;" target="_blank" class="hvr-float-shadow"><i class="fab fa-angellist"></i></a>
+                        
+                        
                     </div>
                     <div id="personalContainer">
                         <span id="personal">Personal:</span>

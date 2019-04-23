@@ -17,11 +17,16 @@ const spritebigMissle = new Image();
 const soundy = new Audio();
 
 
+var database;
+
+
+
 function start() {            //bottomPipe because bottomPipe is bigger so that means that topPipe will 100% load  //this is my function init
     document.getElementById("play").remove();
     // setInterval(draw, 10);
     ducky = new Duck(ctx, spriteDuck);
-    requestAnimationFrame(draw);
+    requestAnimationFrame(draw);            //set this in a callback as a settimeout to do 321 countdown
+
 };
 
 
@@ -53,12 +58,56 @@ document.addEventListener("keyup", keyPress);
 canvas.addEventListener("click", upHandler);
 canvas.addEventListener("click", reloadHandler);
 
-canvas.addEventListener("selectstart", function (e) {
+canvas.addEventListener("selectstart", function (e) {           //prevents highlighting on click
     e.preventDefault();
     return false;
 }, false);
 
 
+var form = document.getElementById("scoreForm");
+
+
+var config = {
+    apiKey: "AIzaSyAueh9kpLxdf0pdc265IlXWNWfY16MVumQ",
+    authDomain: "floppy-duck.firebaseapp.com",
+    databaseURL: "https://floppy-duck.firebaseio.com",
+    projectId: "floppy-duck",
+    storageBucket: "floppy-duck.appspot.com",
+    messagingSenderId: "17684805408"
+};
+firebase.initializeApp(config);
+database = firebase.database();
+
+var ref = database.ref('scores');
+ref.on('value', gotData, errData);
+
+var hiscores = [];
+
+
+function gotData(data){
+    var scores = data.val();
+    var keys = Object.keys(scores);
+
+    for (let i = 0; i < keys.length; i++) {
+        hiscores[i] = (Object.values(scores[keys[i]]));
+        if (hiscores[i][0].length > 6) {
+            hiscores[i][0] = hiscores[i][0].slice(0, 7) + "...";
+        }
+    }
+    hiscores.sort((a, b) => {
+        return b[1] - a[1];
+    })
+    hiscores = hiscores.slice(0, 10);
+
+}
+
+
+
+
+
+function errData(err) {
+
+}
 
 
 
@@ -94,6 +143,27 @@ function reloadHandler(e){
 
 function restart(){
     location.reload();
+}
+
+
+function submitScore(e, score) {
+    e.preventDefault();
+    // debugger
+    if (e.target[0].value.length > 0){
+        var data = {
+            name: e.target[0].value,
+            score: score
+        };
+    }
+
+    console.log(data); 
+    var ref = database.ref('scores');
+
+    ref.push(data);
+
+    document.getElementById("scoreForm").remove();
+    // document.getElementById("gameOver").style.zIndex = 6;
+    document.getElementById("gameOver").style.display = "inline";
 }
 
 
@@ -185,7 +255,9 @@ function draw() {               //step function
     if(!isGameover){
         requestAnimationFrame(draw)
     } else {
-        document.getElementById("gameOver").style.zIndex = 6;
+        document.getElementById("scoreForm").style.display = "inline";
+        form.addEventListener('submit', (e) => submitScore(e, score));
+
     }
 }
 

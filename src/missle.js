@@ -20,7 +20,7 @@ class Missle {
 
 
     drawFrame(){
-        debugger
+        // debugger
         this.frameTimer++;             
         if(this.frameTimer % this.animationSpeed < 1){
             this.currentFrame = (this.currentFrame + 1) % 4;
