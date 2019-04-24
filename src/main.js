@@ -35,8 +35,6 @@ function start() {            //bottomPipe because bottomPipe is bigger so that 
     }, 1000);
 
 
-
-
     setTimeout( () => {
         ducky = new Duck(ctx, spriteDuck);
         requestAnimationFrame(draw);            //set this in a callback as a settimeout to do 321 countdown
