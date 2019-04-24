@@ -6,6 +6,7 @@ import Pipe from './pipe';
 import Score from './score';
 import Missle from './missle';
 import bigMissle from './bigMissle';
+import Countdown from './countdown';
 
 
 const topPipe = new Image();         //setting topPipe to a new image object
@@ -24,10 +25,24 @@ var database;
 function start() {            //bottomPipe because bottomPipe is bigger so that means that topPipe will 100% load  //this is my function init
     document.getElementById("play").remove();
     // setInterval(draw, 10);
-    ducky = new Duck(ctx, spriteDuck);
-    requestAnimationFrame(draw);            //set this in a callback as a settimeout to do 321 countdown
 
-};
+    setInterval( () => {
+        if (countdown > 0){
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            countdowny.drawCountdown(countdown);
+        }
+        countdown--;
+    }, 1000);
+
+
+
+
+    setTimeout( () => {
+        ducky = new Duck(ctx, spriteDuck);
+        requestAnimationFrame(draw);            //set this in a callback as a settimeout to do 321 countdown
+    }, 4000);
+
+}
 
 
 topPipe.src = "./images/topPipe.png";
@@ -42,10 +57,11 @@ const pipeSpacing = 195;
 
 var ducky = new Duck(ctx, spriteDuck);
 const scorey = new Score(ctx);
-
+const countdowny = new Countdown(ctx);
 
 var count = 0;
 let score = 0;
+var countdown = 3;
 var pipes = [];
 var missles = [];
 var bigMissles = [];
@@ -88,16 +104,20 @@ function gotData(data){
     var scores = data.val();
     var keys = Object.keys(scores);
 
-    for (let i = 0; i < keys.length; i++) {
-        hiscores[i] = (Object.values(scores[keys[i]]));
-        if (hiscores[i][0].length > 6) {
-            hiscores[i][0] = hiscores[i][0].slice(0, 7) + "...";
-        }
+    document.getElementById('submits').innerHTML = keys.length;
+    const scoreList = [];
+    for (let idx = 0; idx < keys.length; idx++){
+        const key = keys[idx];
+        scoreList.push(scores[key]);
     }
-    hiscores.sort((a, b) => {
-        return b[1] - a[1];
-    })
-    hiscores = hiscores.slice(0, 10);
+    
+    const leaderBoardLength = Math.min(scoreList.length, 10);
+    const highScores = scoreList.slice(0, leaderBoardLength);
+    const ul = document.getElementById("leaderboard-list");
+    
+    for (let idx = 0; idx < highScores.length; idx++) {
+        
+    }
 
 }
 
@@ -247,13 +267,14 @@ function draw() {               //step function
     scorey.drawScore(score);
 
 
+
     //collision for floor
     isGameover = isGameover || ducky.isCollision();
 
 
 
     if(!isGameover){
-        requestAnimationFrame(draw)
+        requestAnimationFrame(draw);
     } else {
         document.getElementById("scoreForm").style.display = "inline";
         form.addEventListener('submit', (e) => submitScore(e, score));
