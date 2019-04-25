@@ -11,7 +11,7 @@ class Pipe {
         this.ducky = ducky;
         this.x = ctx.canvas.width;
         this.y = topPipe.height * (Math.random() / 2 - 0.5);     // 400(-0.5 -> 0) = -200 -> 0
-        this.spacing = (Math.random() * 100.0) + topPipe.height + 125;           // RECALCULATE
+        this.spacing = (Math.random() * 100.0) + topPipe.height + 200;           // RECALCULATE
         //this.spacing = (Math.random() * [additional spacing range]) + [top img height] + [minimum spacing]; 
         this.isMovingUp = Math.random() > 0.5;
         this.isMoving = shouldMove;

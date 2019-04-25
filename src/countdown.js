@@ -5,9 +5,9 @@ class Countdown {
     }
 
     drawCountdown(score = 0) {
-        this.ctx.font = "Bold 75px Arial";
-        this.ctx.fillStyle = "white";
-        this.ctx.fillText(score, (this.ctx.canvas.width / 2) - 20, this.ctx.canvas.height / 2);
+        this.ctx.font = "Bold 50px 'Dokdo', cursive";
+        this.ctx.fillStyle = "lightcoral";
+        this.ctx.fillText(score, (this.ctx.canvas.width / 2) - 60, this.ctx.canvas.height / 2);
 
     }
 

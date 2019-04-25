@@ -26,12 +26,19 @@ function start() {            //bottomPipe because bottomPipe is bigger so that 
     document.getElementById("play").remove();
     // setInterval(draw, 10);
 
+    let i = 0;
     setInterval( () => {
-        if (countdown > 0){
+        if (i < countdown.length){
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            countdowny.drawCountdown(countdown);
+            countdowny.drawCountdown(countdown[i]);
         }
-        countdown--;
+        i++;  //why does this not work if i moved it into the setInterval?
+        // debugger
+        // if (countdown > 0){
+        //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //     countdowny.drawCountdown(countdown);
+        // }
+        // countdown--;
     }, 1000);
 
 
@@ -59,7 +66,7 @@ const countdowny = new Countdown(ctx);
 
 var count = 0;
 let score = 0;
-var countdown = 3;
+var countdown = ["READY?","set","CLICK!!!"];
 var pipes = [];
 var missles = [];
 var bigMissles = [];

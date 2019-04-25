@@ -21,7 +21,8 @@
             background: #eee;
             display: block;
             /* margin: 0px auto; */
-            border: 1px solid black;
+            /* border: 1px solid black; */
+            box-shadow: 0px 0px 8px 0px lightcoral;
             background-color: white;
             border-radius: 5%;
             /* z-index: 5; */
@@ -35,6 +36,7 @@
             display: flex;
             justify-content: center;
             padding-top: 50px;
+            background-color: lightblue;
         }
 
         #leftSideCanvas{
@@ -224,10 +226,11 @@
             /* display: inline; */
             position: absolute;
             top: 340px;
-            left: calc(50% - 150px);
+            left: calc(50% - 135px);
             /* z-index: 1; */
             display: none;
             cursor: pointer;
+            font-family: 'Dokdo', cursive;
         }
 
         #scoreForm{
@@ -243,11 +246,25 @@
             left: calc(50% - 125px);
             /* z-index: 6; */
             cursor: pointer;
-            
+            font-family: 'Dokdo', cursive;            
+        }
+
+        #score-submit-button{
+            font-family: 'Dokdo', cursive;                        
+        }
+
+        #scoreForm text{
+            font-size: 25px;
+        }
+
+        #title{
+            display: flex;
+            justify-content: center;
+            background-color: lightblue;
         }
 
         #title a{
-            background-color: white;
+            background-color: lightblue;
             color: lightcoral;
             background-size: contain;
             background-repeat: no-repeat;
@@ -275,15 +292,17 @@
         }
 
         #bottom{
-            background-color: white;
+            background-color: lightblue;
             color:lightcoral;
             background-size: contain;
             background-repeat: no-repeat;
             height: 50px;
             display: flex;
             justify-content: center;
+            align-items: center;
             font-family: 'Dokdo', cursive;
             font-size: 36px;
+            padding-top: 20px;
         }
 
         #document{
@@ -357,7 +376,9 @@
         </div>
 
         <div id="title">
-            <a href="http://flappybird.io/" style="text-decoration:none;" target="_blank" class="hvr-buzz">Floppy Duck</a>
+<a href="https://imgur.com/h8S23nj"><img src="https://i.imgur.com/h8S23nj.gif" title="source: imgur.com" /></a>
+            <a href="http://flappybird.io/" style="text-decoration:none;" target="_blank" class="hvr-buzz">FlOppy Duck</a>
+<a href="https://imgur.com/ANuFlqt"><img src="https://i.imgur.com/ANuFlqt.gif" title="source: imgur.com" /></a>
         </div>
         <div id="gameOver"> 
             GAME OVER. CLICK TO PLAY AGAIN! 
@@ -366,7 +387,7 @@
         <form id="scoreForm">
             Enter Name For High Score <br><br>
             Name: <input type="text" name="Username">
-            <button>submit</button>
+            <button id="score-submit-button">Submit</button>
         </form>
 
         <!-- <div class="leaderboard">
@@ -424,7 +445,10 @@
         </div>
 
         <div id="bottom">
-            <span>Left-Click the <img src="https://i.imgur.com/0dZs5zI.gif" alt=""> to flop away</span>
+            <!-- <span>Left-Click the <img src="https://i.imgur.com/0dZs5zI.gif" alt=""> to flop away</span> -->
+            <span>Left-Click the </span>
+            <span><img src="https://i.imgur.com/DkR2HbQ.gif"></span> 
+            <span> to flop away</span>
         </div>
 
 
