@@ -1,4 +1,5 @@
 # Floppy Duck
+[Live Site](https://donaldliu94.github.io/Floppy-Duck/)
 
 Floppy Duck is an interactive Javascript game that was inspired by Flappy bird. It utilizes HTML5 2D Canvas, CSS3, and JavaScript to implement sprites and collision logic.
 
