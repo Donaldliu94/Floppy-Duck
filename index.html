@@ -8,13 +8,18 @@
     <link rel="stylesheet" type="text/css" href="./src/duck.css">
     <link href="https://fonts.googleapis.com/css?family=Dokdo" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-database.js"></script>
+
+
 
     <title>Floppy Duck</title>
     <style>
         * {
             padding: 0;
             margin: 0;
+            background-color: lightblue;
         }
     
         canvas {
@@ -35,7 +40,7 @@
         #innerCanvasContainer{
             display: flex;
             justify-content: center;
-            padding-top: 50px;
+            padding-top: 20px;
             background-color: lightblue;
         }
 
@@ -210,7 +215,7 @@
             padding:20px 15px;
             display: inline;
             position: absolute;
-            top: 340px;
+            top: 405px;
             left: calc(50% - 20px);
             font-family: 'Dokdo', cursive;
             /* z-index: 10; */
@@ -225,7 +230,7 @@
             padding:20px 15px;
             /* display: inline; */
             position: absolute;
-            top: 340px;
+            top: 405px;
             left: calc(50% - 135px);
             /* z-index: 1; */
             display: none;
@@ -242,7 +247,7 @@
             padding:20px 15px;
             display: none;
             position: absolute;
-            top: 340px;
+            top: 380px;
             left: calc(50% - 125px);
             /* z-index: 6; */
             cursor: pointer;
@@ -251,10 +256,11 @@
 
         #score-submit-button{
             font-family: 'Dokdo', cursive;                        
+            background-color: white;
         }
 
-        #scoreForm text{
-            font-size: 25px;
+        #score-input-textbox{
+            background-color: white;
         }
 
         #title{
@@ -303,7 +309,7 @@
             font-family: 'Dokdo', cursive;
             font-size: 36px;
             padding-top: 20px;
-            padding-bottom: 338px;
+            /* padding-bottom: 100%; */
         }
 
         #document{
@@ -352,7 +358,21 @@
         }
 
 
-    
+    #highscores{
+        font-family: 'Dokdo', cursive;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        color:lightcoral;
+        background-color: lightblue;
+        padding: 20px 0 0 0;
+    }
+
+    #highscores ol{
+        font-size: 20px;
+        color:lightcoral;
+        padding-left: 48px;
+    }
 
 
     </style>
@@ -377,17 +397,23 @@
         </div>
 
         <div id="title">
-<a href="https://imgur.com/h8S23nj"><img src="https://i.imgur.com/h8S23nj.gif" title="source: imgur.com" /></a>
+            <a href="https://imgur.com/h8S23nj"><img src="https://i.imgur.com/h8S23nj.gif" title="source: imgur.com" /></a>
             <a href="http://flappybird.io/" style="text-decoration:none;" target="_blank" class="hvr-buzz">FlOppy Duck</a>
-<a href="https://imgur.com/ANuFlqt"><img src="https://i.imgur.com/ANuFlqt.gif" title="source: imgur.com" /></a>
+            <a href="https://imgur.com/ANuFlqt"><img src="https://i.imgur.com/ANuFlqt.gif" title="source: imgur.com" /></a>
         </div>
+
+            <div id="highscores">Highest Scores:
+                <ul>
+                </ul>
+            </div>
+
         <div id="gameOver"> 
             GAME OVER. CLICK TO PLAY AGAIN! 
         </div>
 
         <form id="scoreForm">
             Enter Name For High Score <br><br>
-            Name: <input type="text" name="Username">
+            Name: <input type="text" name="Username" id="score-input-textbox">
             <button id="score-submit-button">Submit</button>
         </form>
 
@@ -401,7 +427,59 @@
         </div> -->
 
 
+        <!-- <div id="highscores">Highest Scores
+            <ul>
 
+            </ul>
+        </div> -->
+
+        <!-- <div id="score">Score: </div> -->
+
+        <script>
+            var config = {
+                apiKey: "AIzaSyAueh9kpLxdf0pdc265IlXWNWfY16MVumQ",
+                authDomain: "floppy-duck.firebaseapp.com",
+                databaseURL: "https://floppy-duck.firebaseio.com",
+                projectId: "floppy-duck",
+                storageBucket: "floppy-duck.appspot.com",
+                messagingSenderId: "17684805408"
+            };
+            firebase.initializeApp(config);
+            const database = firebase.database();
+
+        </script>
+                    
+                    
+        <!-- <script>
+
+            let scores = [];
+            const highscores = document.getElementById('highscores');
+            debugger
+            // const oldList = highscores.childNodes[1];
+
+            // debugger
+            database.ref().orderByChild('score').limitToLast(3).on("value", function (snapshot) {
+                const list = document.createElement('ul');
+                // debugger
+
+                scores = Object.values(snapshot.val())
+                // debugger
+                
+                for (let i = 0; i <= scores.length - 1; i++ ){
+                    var listItem = document.createElement("li")
+                    listItem.innerHTML = scores[i].name + " - " + scores[i].score;
+                    debugger
+                    list.appendChild(listItem);
+                }
+                debugger
+                highscores.replaceChild(list, highscores.childNodes[1]);
+            })
+
+            debugger
+
+        </script> -->
+
+        
 
         <div class="canvasContainer">
             <div id="innerCanvasContainer">
@@ -418,16 +496,21 @@
                     <div id="angelListContainer">
                         <span id="angelList">AngelList:</span>
                         <a href="https://angel.co/donald-liu-1" id="angelListIcon" style="text-decoration:none;" target="_blank" class="hvr-float-shadow"><i class="fab fa-angellist"></i></a>
-                        
+
                     </div>
                     <div id="personalContainer">
                         <span id="personal">Personal:</span>
                         <span id="personalIcon" class="hvr-float-shadow"><i class="fas fa-user-tie"></i></span>
-                    </div>
-                    
-
+                    </div>    
                 </div>
+
+                <!-- <div id="highscores">Highest Scores
+                    <ul>
+                    </ul>
+                </div> -->
+
                 <canvas id="myCanvas" width="400" height="400" style="background: url(https://i.imgur.com/7TxKCdl.gif)"></canvas>
+
                 <div id="rightSideCanvas">
                     <div id="avoid">Avoid</div>
                     <div id="the">the</div>
@@ -453,7 +536,34 @@
         </div>
 
 
+        <script>
 
+            let scores = [];
+            const highscores = document.getElementById('highscores');
+            // const oldList = highscores.childNodes[1];
+
+            // debugger
+            database.ref().orderByChild('score').limitToLast(3).on("value", function (snapshot) {
+                const list = document.createElement('ol');
+                // debugger
+
+                scores = Object.values(snapshot.val())
+                // debugger
+                
+
+                for (let i = scores.length - 1; i >= 0; i--) {
+                    var listItem = document.createElement("li")
+                    listItem.innerHTML = scores[i].name + " : " + scores[i].score;
+                    // debugger
+                    list.appendChild(listItem);
+                }
+                // debugger
+                highscores.replaceChild(list, highscores.childNodes[1]);
+            })
+
+
+
+        </script>
 
     </div>
     <script src="./dist/bundle.js"></script>     

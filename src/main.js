@@ -18,7 +18,7 @@ const spritebigMissle = new Image();
 const soundy = new Audio();
 
 
-var database;
+// var database;
 
 
 
@@ -88,51 +88,52 @@ canvas.addEventListener("selectstart", function (e) {           //prevents highl
 var form = document.getElementById("scoreForm");
 
 
-var config = {
-    apiKey: "AIzaSyAueh9kpLxdf0pdc265IlXWNWfY16MVumQ",
-    authDomain: "floppy-duck.firebaseapp.com",
-    databaseURL: "https://floppy-duck.firebaseio.com",
-    projectId: "floppy-duck",
-    storageBucket: "floppy-duck.appspot.com",
-    messagingSenderId: "17684805408"
-};
-firebase.initializeApp(config);
-database = firebase.database();
+// var config = {
+//     apiKey: "AIzaSyAueh9kpLxdf0pdc265IlXWNWfY16MVumQ",
+//     authDomain: "floppy-duck.firebaseapp.com",
+//     databaseURL: "https://floppy-duck.firebaseio.com",
+//     projectId: "floppy-duck",
+//     storageBucket: "floppy-duck.appspot.com",
+//     messagingSenderId: "17684805408"
+// };
+// firebase.initializeApp(config);
 
-var ref = database.ref('scores');
-ref.on('value', gotData, errData);
+// var database = firebase.database();
+
+// var ref = database.ref('scores');
+// ref.on('value', gotData, errData);
 
 var hiscores = [];
 
 
-function gotData(data){
-    var scores = data.val();
-    var keys = Object.keys(scores);
+// function gotData(data){
+//     var scores = data.val();
+//     var keys = Object.keys(scores);
 
-    document.getElementById('submits').innerHTML = keys.length;
-    const scoreList = [];
-    for (let idx = 0; idx < keys.length; idx++){
-        const key = keys[idx];
-        scoreList.push(scores[key]);
-    }
+//     document.getElementById('submits').innerHTML = keys.length;
+//     const scoreList = [];
+//     for (let idx = 0; idx < keys.length; idx++){
+//         const key = keys[idx];
+//         scoreList.push(scores[key]);
+//     }
     
-    const leaderBoardLength = Math.min(scoreList.length, 10);
-    const highScores = scoreList.slice(0, leaderBoardLength);
-    const ul = document.getElementById("leaderboard-list");
+//     const leaderBoardLength = Math.min(scoreList.length, 10);
+//     const highScores = scoreList.slice(0, leaderBoardLength);
+//     const ul = document.getElementById("leaderboard-list");
     
-    for (let idx = 0; idx < highScores.length; idx++) {
+//     for (let idx = 0; idx < highScores.length; idx++) {
         
-    }
+//     }
 
-}
-
-
+// }
 
 
 
-function errData(err) {
 
-}
+
+// function errData(err) {
+
+// }
 
 
 
@@ -146,9 +147,6 @@ function keyPress(e) {
     }
     else if (e.key == " "){
         upHandler();
-    }
-    else if (e.key == "Enter"){
-        location.reload();
     }
 }
 
@@ -174,21 +172,22 @@ function restart(){
 function submitScore(e, score) {
     e.preventDefault();
     // debugger
-    if (e.target[0].value.length > 0){
+    if (e.target[0].value.length > 0 && e.target[0].value.length < 20){
         var data = {
             name: e.target[0].value,
             score: score
         };
     }
-
-    console.log(data); 
-    var ref = database.ref('scores');
-
+    // console.log(data); 
+    // debugger
+    var ref = database.ref();
     ref.push(data);
 
     document.getElementById("scoreForm").remove();
     // document.getElementById("gameOver").style.zIndex = 6;
     document.getElementById("gameOver").style.display = "inline";
+
+
 }
 
 
