@@ -539,6 +539,18 @@
 
         <script>
 
+            function compare(a, b) {
+                if (a.score < b.score) {
+                    return -1;
+                }
+                if (a.score > b.score) {
+                    return 1;
+                }
+                // a must be equal to b
+                return 0;
+            }
+
+
             let scores = [];
             const highscores = document.getElementById('highscores');
             // const oldList = highscores.childNodes[1];
@@ -550,7 +562,12 @@
 
                 scores = Object.values(snapshot.val())
                 // debugger
-                
+
+                //WHY DOES THIS NOT WORK?
+                // scores.sort(function(a, b) {
+                //     return b - a
+                // });
+                scores.sort(compare)
 
                 for (let i = scores.length - 1; i >= 0; i--) {
                     var listItem = document.createElement("li")

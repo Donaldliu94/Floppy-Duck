@@ -177,15 +177,13 @@ function submitScore(e, score) {
             name: e.target[0].value,
             score: score
         };
+        
+        var ref = database.ref();
+        ref.push(data);
+        document.getElementById("scoreForm").remove();
+        // document.getElementById("gameOver").style.zIndex = 6;
+        document.getElementById("gameOver").style.display = "inline";
     }
-    // console.log(data); 
-    // debugger
-    var ref = database.ref();
-    ref.push(data);
-
-    document.getElementById("scoreForm").remove();
-    // document.getElementById("gameOver").style.zIndex = 6;
-    document.getElementById("gameOver").style.display = "inline";
 
 
 }
