@@ -171,7 +171,7 @@ function restart(){
 
 function submitScore(e, score) {
     e.preventDefault();
-    // debugger
+    debugger
     if (e.target[0].value.length > 0 && e.target[0].value.length < 20){
         var data = {
             name: e.target[0].value,
